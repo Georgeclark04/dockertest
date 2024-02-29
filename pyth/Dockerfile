@@ -1,12 +1,19 @@
 FROM python:latest
 
-RUN mkdir /build 
+# Install Git
+RUN apt-get update && apt-get install -y git
+
+# Create directory for the project
+RUN mkdir /build
 WORKDIR /build
 
-RUN cd /build && git clone git@github.com:Georgeclark04/dockertest.git
+# Clone the repository
+RUN cd /build && git clone https://github.com/Georgeclark04/dockertest.git
+RUN pip3 install flask
+RUN cd /build/dockertest/pyth
 
-RUN cd /build/dockertest/pyth/ && go build
-
+# Expose port
 EXPOSE 8080
 
-ENTRYPOINT [ "/build/dockertest/pyth/app" ]
+# Set entrypoint
+ENTRYPOINT ["/build/dockertest/pyth/app.py"]
