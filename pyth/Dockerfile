@@ -16,4 +16,4 @@ RUN cd /build/dockertest/pyth
 EXPOSE 8080
 
 # Set entrypoint
-ENTRYPOINT ["/build/dockertest/pyth/app.py"]
+ENTRYPOINT ["/build/dockertest/pyth/app"]
